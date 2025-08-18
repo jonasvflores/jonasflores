@@ -1,15 +1,1299 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Treinamentos Power BI - Transforme Dados em Decisões Inteligentes</title>
-    <meta name="description" content="Treinamentos especializados em Power BI para comerciantes e prestadores de serviço no RS. Aprenda a criar dashboards que geram resultados para seu negócio." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonas Flores - Especialista em Power BI</title>
+    <meta name="description" content="Treinamentos presenciais e online em Power BI para empresas e profissionais. Aprenda a criar dashboards que realmente impactam o negócio. Parcelamento em até 6x.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary: #0f172a; /* Dark blue */
+            --secondary: #f97316; /* Orange */
+            --accent: #10b981; /* Green */
+            --neutral: #f9fafb; /* Light gray */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links button:hover {
+            color: var(--secondary);
+        }
+
+        .cta-header {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .cta-header:hover {
+            background-color: #ea580c;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 8rem 0 4rem;
+            text-align: left;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #ea580c;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 40%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transform: rotate(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: rotate(0deg);
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        /* Why Choose */
+        .why-choose-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .why-card {
+            flex: 1;
+            max-width: 400px;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .why-card.red {
+            background-color: #fee2e2;
+            border: 1px solid #ef4444;
+        }
+
+        .why-card.green {
+            background-color: #dcfce7;
+            border: 1px solid #22c55e;
+        }
+
+        .why-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .why-card.red h3 {
+            color: #ef4444;
+        }
+
+        .why-card.green h3 {
+            color: #22c55e;
+        }
+
+        .why-card ul {
+            list-style: none;
+        }
+
+        .why-card li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .why-card.red li i {
+            color: #ef4444;
+        }
+
+        .why-card.green li i {
+            color: #22c55e;
+        }
+
+        /* Services (Modalidades) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .service-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .popular-badge {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .service-card.popular {
+            border: 2px solid var(--secondary);
+        }
+
+        /* Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .product-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .product-card ul {
+            list-style: none;
+        }
+
+        .product-card li {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-card .cta-button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .special-badge {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+        }
+
+        .combo-box {
+            background-color: #3b82f6;
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .combo-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .combo-box p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .combo-box .cta-button {
+            background-color: var(--white);
+            color: #3b82f6;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-subtitle {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card li {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-card .cta-button {
+            width: 100%;
+        }
+
+        .pricing-card.popular .cta-button {
+            background-color: var(--secondary);
+        }
+
+        .pricing-note {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Process */
+        .process-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            color: var(--text-light);
+        }
+
+        /* Sectors */
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .sector-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .sector-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .sector-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sector-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .sectors-note {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Examples */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .example-card {
+            background: var(--white);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .example-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .example-content {
+            padding: 1rem;
+        }
+
+        .example-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-tag {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        /* Contact */
+        .contact {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-form {
+            background: var(--white);
+            color: var(--text-dark);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            text-align: left;
+        }
+
+        .info-item i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+
+        .guarantees {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guarantee i {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-nav a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .process-grid {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .why-choose-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i> Jonas Flores | Power BI
+                </div>
+                <nav class="nav-links">
+                    <button onclick="scrollToSection('inicio')">Início</button>
+                    <button onclick="scrollToSection('servicos')">Serviços</button>
+                    <button onclick="scrollToSection('produtos')">Produtos</button>
+                    <button onclick="scrollToSection('precos')">Preços</button>
+                    <button onclick="scrollToSection('processo')">Como Funciona</button>
+                    <button onclick="scrollToSection('sobre')">Sobre</button>
+                    <button onclick="scrollToSection('depoimentos')">Depoimentos</button>
+                </nav>
+                <button class="cta-header" onclick="scrollToSection('contato')">Diagnóstico Grátis</button>
+                <div class="mobile-menu">
+                    <button class="menu-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <nav class="mobile-nav" id="mobileNav">
+                        <button onclick="scrollToSection('inicio')">Início</button>
+                        <button onclick="scrollToSection('servicos')">Serviços</button>
+                        <button onclick="scrollToSection('produtos')">Produtos</button>
+                        <button onclick="scrollToSection('precos')">Preços</button>
+                        <button onclick="scrollToSection('processo')">Como Funciona</button>
+                        <button onclick="scrollToSection('sobre')">Sobre</button>
+                        <button onclick="scrollToSection('depoimentos')">Depoimentos</button>
+                        <button onclick="scrollToSection('contato')">Diagnóstico Grátis</button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Transforme Seus Dados em Decisões Inteligentes</h1>
+                        <p>Treinamentos presenciais e online em Power BI para empresas e profissionais. Aprenda a criar dashboards que realmente impactam o negócio.</p>
+                        <div class="hero-buttons">
+                            <button class="cta-button" onclick="scrollToSection('contato')">Quero Meu Diagnóstico Grátis</button>
+                            <button class="secondary-button" onclick="scrollToSection('servicos')">Ver Serviços <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                        <div class="stats">
+                            <div class="stat">180+ Alunos Formados</div>
+                            <div class="stat">5+ Anos de Experiência</div>
+                            <div class="stat">100% Satisfação</div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://learn.microsoft.com/en-us/power-bi/create-reports/media/sample-sales-and-marketing/sales1.png" alt="Dashboard de Vendas Exemplo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="por-que">
+            <div class="container">
+                <h2 class="section-title">Por Que Escolher Meu Treinamento?</h2>
+                <p class="section-subtitle">Enquanto outros vendem cursos genéricos onde você faz um tutorial mas na hora de criar seus dashboards não consegue sair do zero, eu entrego resultados práticos com seus próprios dados</p>
+                <div class="why-choose-grid">
+                    <div class="why-card red">
+                        <h3><i class="fas fa-times-circle"></i> O Que Você Encontra Por Ai...</h3>
+                        <ul>
+                            <li><i class="fas fa-times"></i> Aulas gravadas que não te atendem</li>
+                            <li><i class="fas fa-times"></i> Cursos genéricos que não se adaptam a sua realidade</li>
+                            <li><i class="fas fa-times"></i> Relatórios bonitos mas que ninguém consegue manter</li>
+                            <li><i class="fas fa-times"></i> Você fica perdido após a entrega</li>
+                            <li><i class="fas fa-times"></i> Falta de suporte quando você mais precisa</li>
+                        </ul>
+                    </div>
+                    <div class="why-card green">
+                        <h3><i class="fas fa-check-circle"></i> O Que Você Recebe Comigo...</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Treinamento personalizado com seus dados reais</li>
+                            <li><i class="fas fa-check"></i> Dashboards funcionais que sua equipe consegue manter</li>
+                            <li><i class="fas fa-check"></i> Suporte contínuo (até vitalício conforme o plano)</li>
+                            <li><i class="fas fa-check"></i> Metodologia comprovada com +180 alunos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos">
+            <div class="container">
+                <h2 class="section-title">Modalidades de Treinamento</h2>
+                <p class="section-subtitle">Escolha a modalidade que melhor se adapta às necessidades da sua empresa</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon" style="background-color: #3b82f6;">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Treinamento In-Company</h3>
+                        <p>Treinamento presencial na sua empresa, focado nos dados e necessidades específicas do seu negócio.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Customizado para sua empresa</li>
+                            <li><i class="fas fa-check"></i>Horários flexíveis</li>
+                            <li><i class="fas fa-check"></i>Treino com dados reais</li>
+                            <li><i class="fas fa-check"></i>Suporte pós-treinamento</li>
+                        </ul>
+                    </div>
+                    <div class="service-card popular" style="position: relative;">
+                        <span class="popular-badge">MAIS POPULAR</span>
+                        <div class="service-icon" style="background-color: var(--secondary);">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Treinamento Online</h3>
+                        <p>Aulas ao vivo via Teams/Zoom com interação total. Flexibilidade sem perder a qualidade.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Aulas ao vivo interativas</li>
+                            <li><i class="fas fa-check"></i>Gravações disponíveis</li>
+                            <li><i class="fas fa-check"></i>Material didático incluso</li>
+                            <li><i class="fas fa-check"></i>Certificado de conclusão</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon" style="background-color: var(--primary);">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Implementação Completa</h3>
+                        <p>Eu implemento todos os dashboards para você. Suporte se você precisa aprender a usar.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Implementação profissional</li>
+                            <li><i class="fas fa-check"></i>Treinamento de uso</li>
+                            <li><i class="fas fa-check"></i>Documentação completa</li>
+                            <li><i class="fas fa-check"></i>Manutenção inclusa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos">
+            <div class="container">
+                <h2 class="section-title">Meus Produtos e Treinamentos</h2>
+                <p class="section-subtitle">Capacitação completa em ferramentas de análise de dados e apresentação</p>
+                <div class="products-grid">
+                    <div class="product-card" style="position: relative;">
+                        <span class="special-badge">ESPECIALIDADE</span>
+                        <div class="product-icon" style="background-color: var(--secondary);">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Power BI</h3>
+                        <p>Treinamento Completo Power BI</p>
+                        <p>Do básico ao avançado, aprenda a criar dashboards profissionais que transformam dados em insights. Aulas ao vivo com professor dedicado, tirando dúvidas em tempo real e usando seus dados reais – não é curso gravado, é aprendizado personalizado para resultados imediatos.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Fundamentos do Power BI Desktop</li>
+                            <li><i class="fas fa-check"></i>Conexões e modelagem de dados</li>
+                            <li><i class="fas fa-check"></i>DAX (Data Analysis Expressions)</li>
+                            <li><i class="fas fa-check"></i>Visualizações avançadas</li>
+                            <li><i class="fas fa-check"></i>Power BI Service e compartilhamento</li>
+                        </ul>
+                        <button class="cta-button" onclick="scrollToSection('contato')">Quero Este Treinamento</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon" style="background-color: var(--primary);">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <h3>Office</h3>
+                        <p>Excel Avançado para Análise</p>
+                        <p>Domine as funcionalidades avançadas do Excel para preparar dados que alimentarão seus dashboards. Sessões ao vivo com foco em suas demandas reais, diferente de cursos genéricos gravados.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Tabelas Dinâmicas avançadas</li>
+                            <li><i class="fas fa-check"></i>Power Query para ETL</li>
+                            <li><i class="fas fa-check"></i>Fórmulas avançadas e matrizes</li>
+                            <li><i class="fas fa-check"></i>Macros e VBA Básico</li>
+                            <li><i class="fas fa-check"></i>Integração Excel + Power BI</li>
+                        </ul>
+                        <button class="cta-button" style="background-color: var(--primary);" onclick="scrollToSection('contato')">Quero Este Treinamento</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon" style="background-color: var(--primary);">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <h3>Office</h3>
+                        <p>PowerPoint para Apresentações Executivas</p>
+                        <p>Crie apresentações impactantes com seus insights de dados para convencer stakeholders. Aulas interativas ao vivo, adaptadas às suas necessidades específicas.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Design profissional de slides</li>
+                            <li><i class="fas fa-check"></i>Storytelling visual</li>
+                            <li><i class="fas fa-check"></i>Gráficos e infográficos</li>
+                            <li><i class="fas fa-check"></i>Animações estratégicas</li>
+                            <li><i class="fas fa-check"></i>Templates executivos</li>
+                        </ul>
+                        <button class="cta-button" style="background-color: var(--primary);" onclick="scrollToSection('contato')">Quero Este Treinamento</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon" style="background-color: var(--primary);">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python</h3>
+                        <p>Python para Dashboards Personalizados</p>
+                        <p>Um nível mais avançado para personalizar dashboards dentro do Power BI ou criar seus próprios do zero, com muito mais possibilidades. Ensino ao vivo com suporte imediato para suas dúvidas.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Fundamentos de Python para dados</li>
+                            <li><i class="fas fa-check"></i>Pandas e manipulação de dados</li>
+                            <li><i class="fas fa-check"></i>Matplotlib e Plotly para visualizações</li>
+                            <li><i class="fas fa-check"></i>Scripts Python no Power BI</li>
+                            <li><i class="fas fa-check"></i>Dash e Streamlit para dashboards web</li>
+                        </ul>
+                        <button class="cta-button" style="background-color: var(--primary);" onclick="scrollToSection('contato')">Quero Este Treinamento</button>
+                    </div>
+                </div>
+                <div class="combo-box">
+                    <h3>Combo Completo - Power BI + Office + Python</h3>
+                    <p>Adquira 4 treinamentos juntos por 30% de desconto. Da análise básica aos dashboards customizados!</p>
+                    <button class="cta-button" onclick="scrollToSection('contato')">Quero o Combo Completo</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="precos">
+            <div class="container">
+                <h2 class="section-title">Investimento e Pacotes</h2>
+                <p class="section-subtitle">Pacotes flexíveis para aulas ao vivo, com valores que se ajustam ao seu negócio. Em todos os pacotes, você estará apto a criar dashboards antes mesmo de terminar as aulas, com todo suporte inicial para implementações incluído e guias de indicadores para usar em suas realidades. Diferente de cursos gravados, aqui você tem aprendizado personalizado com retorno imediato.</p>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Profissional</h3>
+                        <p>Para profissionais que buscam aulas personalizadas ao vivo, em casa ou remoto.</p>
+                        <div class="price">R$ 1.459</div>
+                        <p class="price-subtitle">Mínimo 8 horas, parcelado em até 6x</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Aulas ao vivo dedicadas, com foco em suas demandas reais</li>
+                            <li><i class="fas fa-check"></i>Apto a criar dashboards antes de terminar as aulas</li>
+                            <li><i class="fas fa-check"></i>Todo suporte inicial para implementações incluído</li>
+                            <li><i class="fas fa-check"></i>Guias de indicadores para aplicar na sua realidade</li>
+                            <li><i class="fas fa-check"></i>Metodologia invertida: dashboards funcionais primeiro</li>
+                            <li><i class="fas fa-check"></i>Certificado de conclusão</li>
+                        </ul>
+                        <button class="cta-button" style="background-color: var(--primary);" onclick="scrollToSection('contato')">Escolher Profissional</button>
+                    </div>
+                    <div class="pricing-card popular" style="position: relative;">
+                        <span class="popular-badge">MAIS POPULAR</span>
+                        <h3>Pequenas e Médias</h3>
+                        <p>Para equipes de até 12 pessoas, focado em dashboards funcionais e visuais.</p>
+                        <div class="price">R$ 2.549 - R$ 4.179</div>
+                        <p class="price-subtitle">16 horas ao vivo ou presencial, parcelado em até 6x</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Aulas interativas com professor ao vivo, usando dados da empresa</li>
+                            <li><i class="fas fa-check"></i>Apto a criar dashboards antes de terminar as aulas</li>
+                            <li><i class="fas fa-check"></i>Todo suporte inicial para implementações incluído</li>
+                            <li><i class="fas fa-check"></i>Guias de indicadores para aplicar na sua realidade</li>
+                            <li><i class="fas fa-check"></i>Diferencial: Foco prático desde o início, não teoria seca</li>
+                            <li><i class="fas fa-check"></i>Certificado para todos</li>
+                        </ul>
+                        <button class="cta-button" onclick="scrollToSection('contato')">Escolher PME</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Grandes Empresas</h3>
+                        <p>Para equipes de até 8 pessoas, aprofundando em DAX e modelagem, ou projetos maiores.</p>
+                        <div class="price">R$ 2.349 - R$ 5.440</div>
+                        <p class="price-subtitle">8 horas ao vivo ou presencial, parcelado em até 6x (ou sob consulta para completo)</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>Sessões ao vivo personalizadas, resolvendo dúvidas reais</li>
+                            <li><i class="fas fa-check"></i>Apto a criar dashboards antes de terminar as aulas</li>
+                            <li><i class="fas fa-check"></i>Todo suporte inicial para implementações incluído</li>
+                            <li><i class="fas fa-check"></i>Guias de indicadores para aplicar na sua realidade</li>
+                            <li><i class="fas fa-check"></i>Diferencial: Aprendizado hands-on com seus dados</li>
+                            <li><i class="fas fa-check"></i>Certificados e suporte estendido</li>
+                        </ul>
+                        <button class="cta-button" style="background-color: var(--primary);" onclick="scrollToSection('contato')">Solicitar Orçamento</button>
+                    </div>
+                </div>
+                <p class="pricing-note">
+                    <i class="fas fa-credit-card"></i> Aceitamos cartão de crédito, PIX, boleto e transferência bancária.<br>
+                    Todas as opções incluem diagnóstico gratuito e garantia de 30 dias. Com foco em aulas ao vivo e suporte real, diferente de treinamentos padronizados, aqui você tem acesso direto ao especialista e adaptação a casos reais da sua empresa.
+                </p>
+            </div>
+        </section>
+
+        <section id="processo">
+            <div class="container">
+                <h2 class="section-title">Como Funciona o Processo</h2>
+                <p class="section-subtitle">Um processo estruturado e transparente para garantir o sucesso do seu projeto</p>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-number" style="background-color: var(--secondary);">1</div>
+                        <h3>Diagnóstico Grátis</h3>
+                        <p>Conversação de 30 minutos para entender seus objetivos, dados disponíveis e definir a melhor estratégia.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number" style="background-color: #3b82f6;">2</div>
+                        <h3>Plano Personalizado</h3>
+                        <p>Criamos um plano sob medida com cronograma, objetivos claros e escolha do pacote ideal.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number" style="background-color: var(--accent);">3</div>
+                        <h3>Execução Guiada</h3>
+                        <p>Treinamentos práticos com seus dados reais e construção de funcionalidades.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number" style="background-color: #a855f7;">4</div>
+                        <h3>Suporte Contínuo</h3>
+                        <p>Suporte técnico garantido conforme seu plano, de 30 dias até vitalício.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="cta-button" onclick="scrollToSection('contato')">Agendar Meu Diagnóstico Grátis</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="setores">
+            <div class="container">
+                <h2 class="section-title">Setores Que Atendo</h2>
+                <p class="section-subtitle">Experiência comprovada em diversos segmentos do mercado brasileiro</p>
+                <div class="sectors-grid">
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Escritórios de Advocacia</h3>
+                        <p>Controle de processos, prazos e gestão financeira.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Setor Financeiro</h3>
+                        <p>Análise de riscos, prevenção de fraudes e indicadores financeiros.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3>Varejo</h3>
+                        <p>Análise de vendas, estoques e comportamento do consumidor.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Saúde</h3>
+                        <p>Indicadores de performance e segurança do paciente.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Logística</h3>
+                        <p>Gestão de transportes, armazém e tempo de entrega.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Recursos Humanos</h3>
+                        <p>Análise de turnover, clima organizacional e produtividade.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Tecnologia da Informação</h3>
+                        <p>Acompanhamento de SLA, erros e segmentações.</p>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Indústria</h3>
+                        <p>Controle de produção, qualidade e indicadores operacionais.</p>
+                    </div>
+                </div>
+                <p class="sectors-note">Mais de 180 empresas atendidas em diversos segmentos.<br>
+                Não viu seu setor? Entre em contato. Adaptamos minha metodologia para qualquer área de negócio.</p>
+            </div>
+        </section>
+
+        <section id="exemplos">
+            <div class="container">
+                <h2 class="section-title">Exemplos de Dashboards Criados</h2>
+                <p class="section-subtitle">Veja alguns exemplos de dashboards que já desenvolvi para diferentes segmentos</p>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <img src="https://placehold.co/400x200/png?text=Dashboard+Financeiro" alt="Dashboard Financeiro" class="example-image">
+                        <div class="example-content">
+                            <h3 class="example-title">Dashboard Financeiro</h3>
+                            <p class="example-desc">Controle de receitas, despesas, fluxo de caixa e indicadores financeiros em tempo real.</p>
+                            <span class="example-tag">Financeiro</span> <span class="example-tag">KPIs</span>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <img src="https://placehold.co/400x200/png?text=Dashboard+Vendas" alt="Dashboard de Vendas" class="example-image">
+                        <div class="example-content">
+                            <h3 class="example-title">Dashboard de Vendas</h3>
+                            <p class="example-desc">Análise de performance de vendas, metas, comissões e ranking de vendedores.</p>
+                            <span class="example-tag">Vendas</span> <span class="example-tag">Ranking</span>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <img src="https://placehold.co/400x200/png?text=Dashboard+Operacional" alt="Dashboard Operacional" class="example-image">
+                        <div class="example-content">
+                            <h3 class="example-title">Dashboard Operacional</h3>
+                            <p class="example-desc">Controle de estoque, produção, logística e indicadores operacionais.</p>
+                            <span class="example-tag">Operações</span> <span class="example-tag">Estoque</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact">
+            <div class="container">
+                <h2 class="section-title" style="color: var(--white);">Pronto Para Transformar Seus Dados?</h2>
+                <p class="section-subtitle" style="color: var(--text-light);">Agende seu diagnóstico gratuito e descubra como dashboards Power BI podem revolucionar sua gestão.</p>
+                <div class="contact-form">
+                    <h3>Diagnóstico Grátis</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nome">Seu Nome Completo *</label>
+                            <input type="text" id="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail Profissional *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp *</label>
+                            <input type="tel" id="whatsapp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="cargo">Cargo/Função</label>
+                            <input type="text" id="cargo">
+                        </div>
+                        <div class="form-group">
+                            <label for="desafio">Qual seu principal desafio com dados?</label>
+                            <textarea id="desafio" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Agendar Diagnóstico Grátis</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Contato Direto</h3>
+                        <p><i class="fab fa-whatsapp"></i> WhatsApp: (11) 99999-9999</p>
+                        <p><i class="fas fa-envelope"></i> E-mail: jonas@powerbitreinamentos.com</p>
+                        <p><i class="fab fa-linkedin"></i> LinkedIn: /in/jonas-flores-powerbi</p>
+                    </div>
+                </div>
+                <div class="guarantees">
+                    <div class="guarantee"><i class="fas fa-check-circle"></i> Diagnóstico 100% gratuito e sem compromisso</div>
+                    <div class="guarantee"><i class="fas fa-check-circle"></i> Satisfação garantida ou dinheiro de volta</div>
+                    <div class="guarantee"><i class="fas fa-check-circle"></i> Suporte técnico conforme contratado</div>
+                    <div class="guarantee"><i class="fas fa-check-circle"></i> Entrega no prazo acordado</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-chart-line"></i> Jonas Flores | Power BI
+                    <p>Especialista em transformar dados em decisões inteligentes através de dashboards Power BI profissionais.</p>
+                    <div class="social-icons">
+                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-whatsapp"></i>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="footer-nav">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#servicos">Modalidades de Treinamento</a></li>
+                        <li><a href="#produtos">Power BI e Office</a></li>
+                        <li><a href="#precos">Pacotes e Investimentos</a></li>
+                        <li><a href="#contato">Diagnóstico Grátis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <p>(11) 99999-9999</p>
+                    <p>jonas@powerbitreinamentos.com</p>
+                    <p>São Paulo, SP</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2024 Jonas Flores - Power BI Treinamentos. Todos os direitos reservados. Desenvolvido para transformar dados em decisões máximas.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offsetTop = element.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+            const mobileNav = document.getElementById('mobileNav');
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            if (mobileNav) {
+                mobileNav.classList.toggle('active');
+            }
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Formulário enviado! Entrarei em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
